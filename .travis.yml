@@ -1,0 +1,17 @@
+language: node_js
+addons:
+    apt:
+        packages:
+            - libgconf-2-4
+node_js:
+    - "8.9.0"
+    - "10.14.0"
+install:
+    - npm install
+before_script:
+    - npm run dist:sandbox
+    - npm start -- --silent &
+script:
+    - npm run lint
+    - npm run test
+    - npm run functional
