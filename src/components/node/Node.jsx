@@ -104,6 +104,7 @@ export default class Node extends React.Component {
             const tx = width / 2;
             const ty = height / 2;
             const transform = `translate(${tx},${ty})`;
+
             label = (
                 <text {...textProps} transform={transform}>
                     {this.props.label}

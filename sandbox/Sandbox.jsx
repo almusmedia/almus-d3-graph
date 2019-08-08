@@ -2,7 +2,6 @@ import React from "react";
 import "./styles.css";
 import Graph from "../src/components/graph/Graph";
 
-
 export default class Sandbox extends React.Component {
     constructor(props) {
         super(props);
@@ -55,12 +54,16 @@ export default class Sandbox extends React.Component {
                 node: {
                     highlightColor: "#dd0000",
                     strokeWidth: 1,
-                    labelProperty: (node) => {
-                        return (<text>
-                            <tspan x="0">{node.id}</tspan>
-                            <tspan x="0" dy="1.2em">{133234.23}</tspan>
-                        </text>);
-                    }
+                    labelProperty: node => {
+                        return (
+                            <text>
+                                <tspan x="0">{node.id}</tspan>
+                                <tspan x="0" dy="1.2em">
+                                    {133234.23}
+                                </tspan>
+                            </text>
+                        );
+                    },
                 },
                 link: {
                     renderLabel: true,
@@ -73,13 +76,7 @@ export default class Sandbox extends React.Component {
         };
     }
 
-
     render() {
-        return (<Graph ref="graph"
-                       id="test"
-                       data={this.state.data}
-                       config={this.state.config}
-        />);
+        return <Graph ref="graph" id="test" data={this.state.data} config={this.state.config} />;
     }
 }
-
