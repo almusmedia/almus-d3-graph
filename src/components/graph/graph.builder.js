@@ -101,7 +101,13 @@ function buildLinkProps(link, nodes, links, config, linkCallbacks, highlightedNo
         strokeWidth += (linkValue * strokeWidth) / 10;
     }
 
-    const markerId = config.directed ? getMarkerId(highlight, transform, config) : null;
+    let markerId = config.directed ? getMarkerId(highlight, transform, config) : null;
+    let linkMarkerDefs;
+
+    if (typeof config.link.marker === "function") {
+        markerId = `${link.source.toLowerCase()}-${link.target.toLowerCase()}`;
+        linkMarkerDefs = config.link.marker(link, nodes, config, markerId, highlight);
+    }
 
     const t = 1 / transform;
 
@@ -124,6 +130,7 @@ function buildLinkProps(link, nodes, links, config, linkCallbacks, highlightedNo
 
     return {
         markerId,
+        linkMarkerDefs,
         d,
         source,
         target,

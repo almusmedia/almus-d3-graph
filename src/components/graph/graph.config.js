@@ -267,5 +267,6 @@ export default {
         semanticStrokeWidth: false,
         strokeWidth: 1.5,
         type: "STRAIGHT",
+        marker: null,
     },
 };

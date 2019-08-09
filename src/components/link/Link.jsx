@@ -98,6 +98,7 @@ export default class Link extends React.Component {
 
         return (
             <g>
+                {!!this.props.linkMarkerDefs ? <defs>{this.props.linkMarkerDefs}</defs> : null}
                 <path {...lineProps} id={id} />
                 {label && (
                     <text style={{ textAnchor: "middle" }} {...textProps}>
